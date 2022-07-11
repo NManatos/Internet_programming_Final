@@ -7,3 +7,6 @@ from .models import Booking,Event,User
 admin.site.register(Booking)
 admin.site.register(Event)
 admin.site.register(User)
+
+fields = ( 'image_tag', )
+readonly_fields = ('image_tag',)
