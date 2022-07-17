@@ -14,7 +14,7 @@ class Event(models.Model):
     price = models.FloatField()
     category = models.CharField(max_length=64)
     coverImg = models.ImageField(upload_to = 'images',blank = True, null = True)
-
+    date = models.DateTimeField(null= True)
     def image_tag(self):
         from django.utils.html import escape
         return u'<img src="landingPage/media/%s" />' % escape(self.coverImg)
@@ -22,7 +22,7 @@ class Event(models.Model):
     image_tag.allow_tags = True
 
     def __str__(self):
-        return f"{self.description}: at {self.location} genre: {self.category} price :{self.price} euro  available seats: {self.seats}"
+        return f"{self.description}: at {self.location} genre: {self.category} price :{self.price} euro  available seats: {self.seats} in {self.date}"
 
 class Data_user(models.Model):
       

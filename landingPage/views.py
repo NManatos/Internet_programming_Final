@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from unicodedata import category
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -14,10 +15,12 @@ from django.contrib import messages
 def index(request):
     all_bookings = Booking.objects.all()
     all_events = Event.objects.all()
+    all_categories = []
     if request.user.is_authenticated:
         current_user = request.user 
     else:
         current_user = NULL
+    
     for eventData in all_events:   
         for b in all_bookings:
             if eventData.id == b.event.id :
@@ -29,14 +32,18 @@ def index(request):
                 else:
                     eventData.avail_seats = eventData.seats -b.seats
                 print(eventData.avail_seats)
-            
+        if not hasattr(eventData,"avail_seats"):
+            eventData.avail_seats = eventData.seats
+        if(eventData.category not in all_categories):
+            all_categories.append(eventData.category)    
+          
 
     #print(current_user)
     return render(request,'landingPage/index.html',
     {   "Events": all_events,
         "Bookings": all_bookings,
-        "current_user":current_user
-        
+        "current_user":current_user,
+        "categories": all_categories
     })
 
 

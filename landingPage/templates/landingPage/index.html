@@ -5,7 +5,16 @@
     {% block content %}
     <main class="page-container">
             FELGRAND &hearts;
-            <table class = "table">
+            <input class="search_input" placeholder="search event"/>
+            <select class="search_category">
+              <option value="">Select Category</option>
+            {% for category in categories %}
+              <option value="{{category}}">
+                  {{category}}
+              </option>
+            {% endfor %}
+            </select>
+            <table class="table">
               <tr>
                 <th></th>
                 <th>Event Description</th>
@@ -14,17 +23,19 @@
                 <th>Price</th>
                 <th>Total Seats</th>
                 <th>Seats Available</th>
+                <th>Date of the Event</th>
                 <th>Book now</th>
               </tr>
               {% for Event in Events %}
-              <tr>
+              <tr class="eventrow">
                 <td><img src="{{Event.coverImg.url}}"/></td>
-                <td>{{Event.description}}</td>
+                <td class="description">{{Event.description}}</td>
                 <td>{{Event.location}}</td>
-                <td>{{Event.category}}</td>
+                <td class="category">{{Event.category}}</td>
                 <td>{{Event.price}}</td>
                 <td>{{Event.seats}}</td>
                 <td>{{Event.avail_seats}}</td>
+                <td>{{Event.date}}</td>
                 {%if current_user%}
                 <td><a class="btn btn-outline-info button2" href ="booking?eventID={{Event.id}}">
                   Book
