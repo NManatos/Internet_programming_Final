@@ -4,7 +4,7 @@
 {% endblock head %}
     {% block content %}
     <main class="page-container">
-            Welcome to life
+            FELGRAND &hearts;
             <table class = "table">
               <tr>
                 <th></th>
@@ -12,6 +12,7 @@
                 <th>Location</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Total Seats</th>
                 <th>Seats Available</th>
                 <th>Book now</th>
               </tr>
@@ -23,9 +24,12 @@
                 <td>{{Event.category}}</td>
                 <td>{{Event.price}}</td>
                 <td>{{Event.seats}}</td>
-                <td><a class="btn btn-outline-info button2" onclick="{book(Event.description.event_id)}">
+                <td>{{Event.avail_seats}}</td>
+                {%if current_user%}
+                <td><a class="btn btn-outline-info button2" href ="booking?eventID={{Event.id}}">
                   Book
                 </a></td>
+                {%endif%}
               </tr>
               {% endfor %}
             </table>

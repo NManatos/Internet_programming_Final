@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Book Now</title>
+{% endblock head %}
+{% block content %}
+<main class="page-container">
+    <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Book</button>
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %} 
+</main>
+{% endblock content %}
