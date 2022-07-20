@@ -1,15 +1,23 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import UserLabel
+from django.forms import DateField, ModelForm
 
 
+class UserLabelForm(ModelForm):
+    
+    class Meta:
+        model = UserLabel
+        fields ="__all__"
+    def save(self, commit=True):
+        user_label = UserLabel.create(user=self.cleaned_data['user'],birthdate=self.cleaned_data['birthdate'])
+        return user_label
+    
 
-
-class RatingForm(forms.Form):
-    rating =forms.IntegerField()        
 class BookingForm(forms.Form):
     seats = forms.IntegerField(max_value=10,min_value=0)
-    
+
 class AuthenticationForm(forms.Form):
     username = forms.CharField(max_length=20)
     password = forms.CharField(widget=forms.PasswordInput)
@@ -31,5 +39,5 @@ class RegistrationForm(UserCreationForm):
         )
         user.first_name = self.cleaned_data['first_name'] 
         user.last_name = self.cleaned_data['last_name']
-        user.save() 
+        user.save()
         return user 

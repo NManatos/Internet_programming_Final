@@ -1,12 +1,14 @@
 <!doctype html>  
 <html lang="en">  
   <head>  
-    
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href='/static/css/style.css'>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/static/js/jQueryPlugin.js"></script>
     {% block head %}  
@@ -21,11 +23,12 @@
                 <img src="/static/images/logo.png" alt="" width ="200px" class="d-inline-block align-text-top" id="image1"> 
             </a>
             {%if current_user%}
-              <p>Welcome {{current_user.username}}</p>
-              <a href="{% url 'logout' %}">Logout</a>
+              <h1>Welcome {{current_user.username}}</h1>
+              <a class="btn btn-outline-info button2" href="{% url 'logout' %}">Logout</a>
+              <a class="btn btn-outline-info button2" href="{% url 'profile' %}">User Settings</a>
             {%else%}
-              <a href="{% url 'login' %}">Login</a> 
-              <a href="{% url 'register' %}">Register</a>
+              <a class="btn btn-outline-info button2" href="{% url 'login' %}">Login</a> 
+              <a class="btn btn-outline-info button2" href="{% url 'register' %}">Register</a>
             {%endif%}
         </nav>
     </header>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>User Profile</title>
+{% endblock head %}
+{% block content %}
+<main class="page-container">
+    {% load custom_tags %}
+    {% load ratings %}
+    {% load static %}
+    <div>
+        <table class="table">
+            <th>Rate the events</th>
+            <tr>
+              <th></th>
+              <th>Event Description</th>
+              <th>Location</th>
+              <th>Category</th>
+              <th>Booked Seats</th>
+              <th>Date of the Event</th>
+              <th>Rating</th>
+            </tr>
+            {% for booked_event in booked_events %}
+                
+                    <tr class="bookedeventrow">
+                        <td><img class=".img-responsive display:block" src="{{booked_event.coverImg.url}}" width="333" height="222"/></td>
+                        <td>{{booked_event.description}}</td>
+                        <td>{{booked_event.location}}</td>
+                        <td>{{booked_event.category}}</td>
+                        <td>{{ booked_seats|get_item:booked_event.id }}</td>  
+                        <td>{{booked_event.date}}</td>
+                        <td><form method = Post>{% ratings booked_event %}</form></td>
+                       
+                    </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div>
+        {% if current_user %}
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" name="submit"/> 
+        </form>
+        {%endif%}
+    </div>
+</main>
+{% endblock content %}

@@ -4,12 +4,31 @@
 <title>Book Now</title>
 {% endblock head %}
 {% block content %}
-<main class="page-container">
-    <form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Book</button>
-    </form>
+<main class="page-container justify-content-center">
+    <div class="card d-flex justify-content-center" style="width: 18rem;">
+        <img class="card-img-top" src="{{Event.coverImg.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{Event.description}}</h5>
+          <p class="card-text"></p>
+        </div>
+        <ul class="list-group d-flex justify-content-center list-group-flush">
+          <li class="list-group-item">{{Event.location}}</li>
+          <li class="list-group-item">{{Event.date}}</li>
+          <li class="list-group-item">{{Event.price}} Euro</li>
+        </ul>
+        <div class="card-body d-flex justify-content-center">
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-outline-info button2" type="submit">Book</button>
+                <a class="btn btn-outline-info button2" href ="/">
+                    Back to Events
+                  </a>
+            </form>
+            
+        </div>
+      </div>
+    
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}

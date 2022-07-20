@@ -27,8 +27,8 @@
                 <th>Book now</th>
               </tr>
               {% for Event in Events %}
-              <tr class="eventrow">
-                <td><img src="{{Event.coverImg.url}}"/></td>
+              <tr class="eventrow table">
+                <td ><img class=".img-responsive display:block" src="{{Event.coverImg.url}}" width="333" height="222"/></td>
                 <td class="description">{{Event.description}}</td>
                 <td>{{Event.location}}</td>
                 <td class="category">{{Event.category}}</td>

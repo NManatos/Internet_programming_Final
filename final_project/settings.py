@@ -37,12 +37,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'landingPage',
+    #'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'star_ratings',
+   
+    
 ]
 
 MIDDLEWARE = [
@@ -60,7 +64,7 @@ ROOT_URLCONF = 'final_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR /"landingPage/templates/landingPage"],
+        'DIRS': [BASE_DIR /"landingPage/templates/landingPage",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +135,45 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'landingPage/media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "landingPage/templates/landingPage/login.html"
+
+# REST_FRAMEWORK = {
+#     'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
+#     'DEFAULT_PAGINATION_CLASS':
+#         'rest_framework_json_api.pagination.JsonApiPageNumberPagination',
+#     'DEFAULT_PARSER_CLASSES': (
+#         #'rest_framework_json_api.parsers.JSONParser',
+#         'rest_framework.parsers.FormParser',
+#         'rest_framework.parsers.MultiPartParser'
+#     ),
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework_json_api.renderers.JSONRenderer',
+#         # If you're performance testing, you will want to use the browseable API
+#         # without forms, as the forms can generate their own queries.
+#         # If performance testing, enable:
+#         # 'example.utils.BrowsableAPIRendererWithoutForms',
+#         # Otherwise, to play around with the browseable API, enable:
+#         'rest_framework.renderers.BrowsableAPIRenderer'
+#     ),
+#     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
+#     'DEFAULT_FILTER_BACKENDS': (
+#         'rest_framework_json_api.filters.QueryParameterValidationFilter',
+#         'rest_framework_json_api.filters.OrderingFilter',
+#         'rest_framework_json_api.django_filters.DjangoFilterBackend',
+#         'rest_framework.filters.SearchFilter',
+#     ),
+#     'SEARCH_PARAM': 'filter[search]',
+#     'TEST_REQUEST_RENDERER_CLASSES': (
+#         'rest_framework_json_api.renderers.JSONRenderer',
+#     ),
+#     'TEST_REQUEST_DEFAULT_FORMAT': 'vnd.api+json',
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#         #'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+#     ],
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#     #'rest_framework.authentication.SessionAuthentication',
+# )
+#}
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, 'fixtures')
+]
