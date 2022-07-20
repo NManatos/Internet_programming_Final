@@ -5,14 +5,15 @@ from django.urls import path, include
 #from rest_framework import routers
 #from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from .models import Event
 
 
 
 urlpatterns = [
-    path('', views.index, name = 'index'),
+    path('', views.index,name ='index'),
     path('register/',views.register,name= 'register'),
     path('login/', views.login,name ='login'),
-    path('booking/',views.booking,name ='booking'),
+    path('booking?eventID=<int:pk>/',views.booking,name='booking'),
     path('logout/',views.logout,name ='logout'),
     path('profile/', views.profile,name ='profile'),
     path('ratings/', include('star_ratings.urls', namespace ='ratings'))
