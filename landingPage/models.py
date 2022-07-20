@@ -23,7 +23,7 @@ class Event(models.Model):
 class Booking(models.Model):
     seats = models.IntegerField(null= True)
     event = models.ForeignKey(Event,on_delete=models.CASCADE,null= True,related_name="bookingEvent")
-    user = models.ForeignKey(User,on_delete=models.PROTECT,null= True,related_name="bookingUser")
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null= True,related_name="bookingUser")
     def __str__(self):
          return f"{self.id} {self.event.description} from {self.user.username}"
     class Meta:
