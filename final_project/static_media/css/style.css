@@ -1,0 +1,42 @@
+h1 {
+    text-align: center;
+    font-family: Roboto;
+    font-size : 44px
+     
+}
+.search_input {
+  color:#39f
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-size : 24px
+  }
+  
+  header,
+  footer {
+    background-color: lime;
+    flex: none;
+  }
+  
+  main {
+    -webkit-overflow-scrolling: touch;
+    flex: auto;
+  }
+#StickyHeader {
+    font-family: Roboto;
+    font-size: 44px
+}
+.page-container{
+    
+    margin-top: 20px;
+    background-image: linear-gradient(white,lime );
+}

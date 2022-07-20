@@ -4,12 +4,12 @@ from landingPage import views
 from django.urls import path, include
 #from rest_framework import routers
 #from rest_framework.urlpatterns import format_suffix_patterns
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
 urlpatterns = [
-    path('', views.index2, name = 'index'),
+    path('', views.index, name = 'index'),
     path('register/',views.register,name= 'register'),
     path('login/', views.login,name ='login'),
     path('booking/',views.booking,name ='booking'),
@@ -18,7 +18,13 @@ urlpatterns = [
     path('ratings/', include('star_ratings.urls', namespace ='ratings'))
     ]
 
+urlpatterns += staticfiles_urlpatterns()
 
+# urlpatterns += patterns('', (
+#     r'^static/(?P<path>.*)$',
+#     'django.views.static.serve',
+#     {'document_root': settings.STATIC_ROOT}
+# ))
 # router = routers.DefaultRouter()
 # router.register(r'users', UserViewSet, basename=sqlite3)
 # router.register(r'events', EventViewSet,basename=sqlite3)

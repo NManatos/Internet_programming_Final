@@ -1,4 +1,4 @@
-from django.template import loader
+#from django.template import loader
 from django import template
 
 

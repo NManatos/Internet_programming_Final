@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from . import urls
 from django.contrib.auth import signals
-from .models import user
+#from .models import user
 from .models import Event,Booking,User
 from django.contrib.auth import login, authenticate,logout
 #from django.contrib.auth.forms import UserChangeForm
@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 #from rest_framework_json_api import parsers
-from landingPage.serializers import EventSerializer
+#from landingPage.serializers import EventSerializer
 from django.views.generic import TemplateView
 #import json
 # import requests
@@ -22,7 +22,7 @@ from django.views.generic import TemplateView
 # from rest_framework import status
 #from permission_classes import DjangoModelPermissionsOrAnonReadOnly
 
-def index2(request):
+def index(request):
     all_bookings = Booking.objects.all()
     all_events = Event.objects.all()
     all_categories = []
@@ -45,7 +45,7 @@ def index2(request):
             all_categories.append(eventData.category)    
         
 
-    return render(request,'landingPage/index.html',
+    return render(request,'index.html',
     {   "Events": all_events,
         "Bookings": all_bookings,
         "current_user":current_user,

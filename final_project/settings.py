@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-
+PROJECT_DIR=os.path.dirname(__file__)
 
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
@@ -125,7 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT= os.path.join(PROJECT_DIR,'static_media/')
 MEDIA_URL = 'landingPage/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'landingPage/media')
 
@@ -134,8 +135,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'landingPage/media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "landingPage/templates/landingPage/login.html"
-
+LOGIN_REDIRECT_URL = "landingPage/templates/landingPage/index.html"
+LOGOUT_REDIRECT_URL = "landingPage/templates/landingPage/login.html"
 # REST_FRAMEWORK = {
 #     'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
 #     'DEFAULT_PAGINATION_CLASS':
@@ -174,6 +175,6 @@ LOGIN_REDIRECT_URL = "landingPage/templates/landingPage/login.html"
 #     #'rest_framework.authentication.SessionAuthentication',
 # )
 #}
-FIXTURE_DIRS = [
-    os.path.join(BASE_DIR, 'fixtures')
-]
+# FIXTURE_DIRS = [
+#     os.path.join(BASE_DIR, 'fixtures')
+# ]

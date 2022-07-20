@@ -1,9 +1,9 @@
 from asyncio.windows_events import NULL
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings
+#from django.conf import settings
 # Create your models here.
-user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
+#user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
 class UserLabel(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,null= True)
     birthdate = models.DateTimeField(null= True,blank = True)
@@ -23,7 +23,7 @@ class Event(models.Model):
 class Booking(models.Model):
     seats = models.IntegerField(null= True)
     event = models.ForeignKey(Event,on_delete=models.CASCADE,null= True,related_name="bookingEvent")
-    user = models.ForeignKey(User,on_delete=models.CASCADE,null= True,related_name="bookingUser")
+    user = models.ForeignKey(User,on_delete=models.PROTECT,null= True,related_name="bookingUser")
     def __str__(self):
          return f"{self.id} {self.event.description} from {self.user.username}"
     class Meta:

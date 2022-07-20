@@ -21,7 +21,7 @@
                 {% csrf_token %}
                 {{form.as_p}}
                 <button class="btn btn-outline-info button2" type="submit">Book</button>
-                <a class="btn btn-outline-info button2" href ="/">
+                <a class="btn btn-outline-info button2" href = "{% url'index' %}">
                     Back to Events
                   </a>
             </form>
