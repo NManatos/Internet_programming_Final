@@ -11,7 +11,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.index2, name = 'index'),
     path('register/',views.register,name= 'register'),
-    path('login/', views.login,name ='login'),
+    path('login/', views.loginForm,name ='login'),
     path('booking/',views.booking,name ='booking'),
     path('logout/',views.logout,name ='logout'),
     path('profile/', views.profile,name ='profile'),

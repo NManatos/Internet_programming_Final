@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 # Create your models here.
-user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
+#user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
 class UserLabel(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,null= True)
     birthdate = models.DateTimeField(null= True,blank = True)

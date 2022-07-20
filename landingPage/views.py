@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from . import urls
 from django.contrib.auth import signals
-from .models import user
+#from .models import user
 from .models import Event,Booking,User
 from django.contrib.auth import login, authenticate,logout
 #from django.contrib.auth.forms import UserChangeForm
@@ -114,7 +114,7 @@ def loginForm(request):
 
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponse("You Logged out")
 
 def book(eventID):
     print(eventID)
