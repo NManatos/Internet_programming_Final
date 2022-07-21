@@ -26,7 +26,7 @@
                         <td>{{booked_event.description}}</td>
                         <td>{{booked_event.location}}</td>
                         <td>{{booked_event.category}}</td>
-                        <td>{{ booked_seats|get_item:booked_event.id }}</td>  
+                        <td>{{ booked_seats|get_item:booked_event.id }}</td>
                         <td>{{booked_event.date}}</td>
                         <td><form method = Post>{% ratings booked_event %}</form></td>
                        
@@ -34,13 +34,16 @@
             {%endfor%}
         </table>
     </div>
-    <div>
+    <div class="card-body d-flex justify-content-center">
+        <a class="greetings" href="javascript:void(0)">Hey{{ current_user }}</a>
         {% if current_user %}
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" name="submit"/> 
-        </form>
+            <form method="post" class="user_details_form" style="display:none">
+                {% csrf_token %}
+                {{cake}}
+
+
+            <input type="submit" name="submit"/>
+            </form>
         {%endif%}
     </div>
 </main>

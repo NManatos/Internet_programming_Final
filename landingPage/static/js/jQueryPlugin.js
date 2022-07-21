@@ -30,4 +30,8 @@ window.addEventListener('DOMContentLoaded', (event) => {     console.log('DOM fu
             }
         });
     })
+    $(".greetings").on("click",()=>{
+        $(".user_details_form").show()
+        console.log("clicked")
+    })
 });
