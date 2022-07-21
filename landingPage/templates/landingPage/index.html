@@ -7,7 +7,7 @@
             FELGRAND &hearts;
             <input class="search_input" placeholder="search event"/>
             <select class="search_category">
-              <option value="">Select Category</option>
+              <option value="none">Select Category</option>
             {% for category in categories %}
               <option value="{{category}}">
                   {{category}}
@@ -28,11 +28,11 @@
               </tr>
               {% for Event in Events %}
               <tr class="eventrow table">
-                <td ><img class=".img-responsive display:block" src="{{Event.coverImg.url}}" width="333" height="222"/></td>
+                <td ><img class="img-responsive" src="{{Event.coverImg.url}}"  height="222"/></td>
                 <td class="description">{{Event.description}}</td>
                 <td>{{Event.location}}</td>
                 <td class="category">{{Event.category}}</td>
-                <td>{{Event.price}}</td>
+                <td>{{Event.price}} &euro;</td>
                 <td>{{Event.seats}}</td>
                 <td>{{Event.avail_seats}}</td>
                 <td>{{Event.date}}</td>

@@ -1,26 +1,29 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.conf.global_settings import DATE_INPUT_FORMATS
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import UserLabel
+from django.forms.widgets import DateTimeInput
 from django.forms import ModelForm
-from django.contrib.admin import ModelAdmin
-from fieldmaker.forms import ExpandableForm
 
 
-class UserLabelForm(ExpandableForm):
-    birthday = forms.dateTimeField()
+# from django.contrib.admin import ModelAdmin
+# from fieldmaker.forms import ExpandableForm
 
-    class Meta:
-        UserChangeForm = 'cake'
-        # exclude = ["username"]
-        # fields ='__all__'
-        # ["username","first_name","last_name","email"]
+class mDateTimeField(forms.DateTimeField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('input_formats', DATE_INPUT_FORMATS)
+        super(mDateTimeField, self).__init__(*args, **kwargs)
 
-    # def __init__(self, args, **kwargs):
-    #     super(UserLabelForm, self).__init__(args, **kwargs)
-    def save(self, commit=True):
-        user_label = UserLabel.objects.create(user=self.cleaned_data['user'], birthdate=self.cleaned_data['birthdate'])
-        return user_label
+
+class CustomUserChangeForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+
+
+class UserLabelForm(forms.Form):
+    birthday = forms.CharField(widget=forms.TextInput(attrs={'type': 'date'}))
+
 
 
 class BookingForm(forms.Form):

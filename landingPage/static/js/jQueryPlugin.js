@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {     console.log('DOM fully loaded and parsed'); 
     $(".search_input").on("keyup",function(event){
-        
+        $(".search_category").val("none")
         var searchTerm = event.target.value.toLowerCase().trim();
         var eventDescriptions = $(".description");
         $.each(eventDescriptions,(index,description) => {
@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', (event) => {     console.log('DOM fu
         });
     })
     $(".search_category").on("change",function(event){
-        
+        $(".search_input").val('')
         var searchTerm = event.target.value;
         var eventCategories = $(".category");
         $.each(eventCategories,(index,category) => {

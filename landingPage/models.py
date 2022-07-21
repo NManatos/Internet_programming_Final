@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class UserLabel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    birthdate = models.DateTimeField(null=True, blank=True)
+    birthdate = models.DateField(null=True, blank=True, max_length = 100)
 
 
 class Event(models.Model):
